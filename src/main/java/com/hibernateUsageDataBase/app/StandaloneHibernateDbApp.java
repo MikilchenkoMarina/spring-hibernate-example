@@ -33,7 +33,7 @@ public class StandaloneHibernateDbApp {
         reminderDao.addReminder(reminderOne);
         reminderDao.addReminder(reminderTwo);
 
-        User testUser = new User(/*1,*/ "Marina", "Mikilchenko", "mikimar777", "pass", remList);
+        User testUser = new User("FirstName", "LastName", "testUserName", "pass1234", remList);
         userDao.addUser(testUser);
 
         updateRemembers(reminderDao, remList, testUser);

@@ -52,6 +52,7 @@ public class HibernateUserDao implements UserDao {
         return (User) session.get(User.class, id);
     }
 
+  //  @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {ObjectNotFoundException.class, ConstraintViolationException.class})
     @Override
     public boolean deleteUserById(int id) {
         return deleteById(User.class, id);
@@ -64,7 +65,7 @@ public class HibernateUserDao implements UserDao {
         return session.createQuery("from User").list();
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {ObjectNotFoundException.class, ConstraintViolationException.class})
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {ObjectNotFoundException.class})
     private boolean deleteById(Class<?> type, Serializable id) {
         Session session = currentSession();
         Object persistentInstance = session.load(type, id);
